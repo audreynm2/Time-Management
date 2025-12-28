@@ -98,7 +98,7 @@ You can test endpoints using **Postman** or **Insomnia**.
 
 ## 👤 Author
 
-**Audrey N. Mach**
+**Audrey Machivenyika**
 Software Developer | Software Engineering Student
 
 ---
