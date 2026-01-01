@@ -1,7 +1,8 @@
 from rest_framework import serializers
-from .models import MissionObjective
+from .models import Task
 
-class ObjectiveSerializer(serializers.ModelSerializer):
+class TaskSerializer(serializers.ModelSerializer):
     class Meta:
-        model = MissionObjective
+        model = Task
         fields = '__all__'
+        read_only_fields = ['user', 'completed_at', 'created_at']
