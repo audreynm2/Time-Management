@@ -25,7 +25,9 @@ SECRET_KEY = "django-insecure-6-#9(nvvabh))!z7(kg$=r*_=oqt-cijf6*!pet9-pk&v73=&w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+
+CSRF_TRUSTED_ORIGINS = ["https://*.replit.dev", "https://*.replit.app"]
 
 
 # Application definition
@@ -38,7 +40,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "api",
-    "rest_frameworks",
+    "rest_framework",
+    "django_filters",
 ]
 
 MIDDLEWARE = [
