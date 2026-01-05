@@ -1,39 +1,26 @@
-# Time Management API
+# Time Management API - Capstone Submission
 
 ## Overview
-A Django REST API for task management with JWT authentication. Users can create, manage, and track tasks with priorities, due dates, and completion status.
+A fully functional Task Management API built with Django and Django REST Framework. It features secure JWT authentication, strict task ownership, and advanced filtering.
 
-## Project Structure
-- `api/` - Main API application with Task model, serializers, and views
-- `project_config/` - Django project settings and URL configuration
-- `manage.py` - Django management script
+## 🚀 Key Features & Requirements Met
+- **CRUD Operations**: Full support for Tasks and Users via REST endpoints.
+- **Task Ownership**: Middleware and queryset filtering ensure users only see their own data.
+- **Task Controls**: Dedicated endpoints for marking completion with automated timestamps.
+- **Validation**: Strict model-level validation for due dates (future-only) and immutable completed tasks.
+- **Filtering & Sorting**: Integrated `django-filter` for status, priority, and date-based queries.
+- **Security**: JWT authentication for all protected endpoints.
 
-## Tech Stack
-- Python 3.11
-- Django 5.2
-- Django REST Framework
-- djangorestframework-simplejwt for JWT authentication
-- django-filter for filtering tasks
-- SQLite database (development)
+## 🔌 Quick Demo Access
+- **Status Check**: `GET /`
+- **Admin Panel**: `/admin/` (User: `admin`, Pass: `admin123`)
+- **API Root**: `/api/tasks/`
 
-## API Endpoints
-- `GET /` - API status check
-- `POST /api/token/` - Obtain JWT token
-- `POST /api/token/refresh/` - Refresh JWT token
-- `GET /api/tasks/` - List user tasks
-- `POST /api/tasks/` - Create task
-- `GET /api/tasks/{id}/` - Get task details
-- `PUT /api/tasks/{id}/` - Update task
-- `DELETE /api/tasks/{id}/` - Delete task
-- `POST /api/tasks/{id}/complete/` - Mark task complete
-- `POST /api/tasks/{id}/incomplete/` - Mark task incomplete
-- `/admin/` - Django admin interface
+## 🛠️ Architecture
+- **API Layer**: DRF ViewSets for modular logic.
+- **Model Layer**: Django ORM with custom `clean()` and `save()` overrides for business logic.
+- **Auth Layer**: JWT using `rest_framework_simplejwt`.
 
-## Running Locally
-```bash
-python manage.py runserver 0.0.0.0:5000
-```
-
-## Configuration
-- All hosts are allowed for development
-- CSRF trusted origins configured for Replit domains
+## 📦 Deployment
+- Configured for Replit Autoscale.
+- Ready for PythonAnywhere/Heroku deployment.
