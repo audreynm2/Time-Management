@@ -1,9 +1,9 @@
 
-# 🕒 Time Management API
+# 🕒 Task Management API
 
 ## 📌 Description
 
-The Time Management API is a Django-based backend service designed to help users manage tasks efficiently. It follows RESTful design principles and provides a robust foundation for productivity applications.
+The Task Management API is a Django-based backend service designed to help users manage tasks efficiently. It follows RESTful design principles and provides a robust foundation for productivity applications.
 
 ## 🚀 Key Features
 
