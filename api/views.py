@@ -20,11 +20,20 @@ class TaskViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
+    def perform_update(self, serializer):
+        task = self.get_object()
+        if task.status == 'Completed':
+            return Response(
+                {"error": "Completed tasks cannot be edited. Mark as incomplete first."},
+                status=400
+            )
+        serializer.save()
+
     @action(detail=True, methods=['post'])
     def complete(self, request, pk=None):
         task = self.get_object()
         task.mark_complete()
-        return Response({'status': 'task marked complete'})
+        return Response({'status': 'task marked complete', 'completed_at': task.completed_at})
 
     @action(detail=True, methods=['post'])
     def incomplete(self, request, pk=None):

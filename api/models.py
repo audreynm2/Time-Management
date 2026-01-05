@@ -1,6 +1,7 @@
-from datetime import timezone
+from django.utils import timezone
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 PRIORITY_CHOICES = (
     ('Low', 'Low'),
@@ -23,6 +24,14 @@ class Task(models.Model):
     completed_at = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def clean(self):
+        if self.due_date and self.due_date < timezone.now():
+            raise ValidationError("Due date must be in the future.")
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super().save(*args, **kwargs)
+
     def mark_complete(self):
         self.status = 'Completed'
         self.completed_at = timezone.now()
@@ -32,3 +41,6 @@ class Task(models.Model):
         self.status = 'Pending'
         self.completed_at = None
         self.save()
+
+    def __str__(self):
+        return self.title
